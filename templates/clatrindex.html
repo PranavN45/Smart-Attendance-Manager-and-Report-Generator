@@ -1,0 +1,193 @@
+{% comment %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Teacher Index</title>
+</head>
+
+<body>
+    <h1>{{a}}</h1>
+    <h1>{{b}}</h1>
+    <form action="{% url 'down_report' %}" method="POST">
+        {%csrf_token%}
+        <input type="submit" value="download">
+    </form>
+</body>
+
+</html> {% endcomment %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% comment %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> {% endcomment %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>SMART ATTENDANCE MANAGER</title>
+    <link rel="shortcut icon" href="{% static 'img/logow.png' %}" type="image/x-icon">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+
+    <link href="{% static 'assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .demo select {
+            border: 0 !important;
+            /*Removes border*/
+            -webkit-appearance: none;
+            /*Removes default chrome and safari style*/
+            -moz-appearance: none;
+            /* Removes Default Firefox style*/
+            appearance: none;
+            background: #3fcc9d url(img/select-arrow.png) no-repeat 90% center;
+            width: 100px;
+            /*Width of select dropdown to give space for arrow image*/
+            text-indent: 0.01px;
+            /* Removes default arrow from firefox*/
+            text-overflow: "";
+            /*Removes default arrow from firefox*/
+            /*My custom style for fonts*/
+            color: #FFF;
+            padding: 5px;
+        }
+
+        .down-btn {
+            padding: 10px 15px;
+            border-radius: 10px;
+            background-color: rgb(160 180 218);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background-color: #573aaf;">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'img/logog.png' %}" width="25" height="25" class="d-inline-block align-top" alt="">
+            Smart Attendance
+        </a>
+        <nav class="navbar navbar-dark p-1">
+            <span class="navbar-text">
+                CLASS TEACHER ACCOUNT
+            </span>
+        </nav>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href={% url 'logout' %}>Log Out <span data-feather="log-out"></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href={% url 'studindex' %}>
+                                <span data-feather="home"></span>
+                                Home <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        {% comment %} <li class="nav-item">
+                            <a class="nav-link" href="{% url 'studprofile'  %}">
+                                <span data-feather="user"></span>
+                                Profile <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'studadd'  %}">
+                                <span data-feather="calendar"></span>
+                                Attendance <span class="sr-only"></span>
+                            </a>
+                        </li> {% endcomment %}
+                    </ul>
+                </div>
+            </nav>
+            <!-- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1>{{a}}</h1>
+                    <h1>{{b}}</h1>
+                    <form action="{% url 'down_report' %}" method="POST">
+                        {%csrf_token%}
+                        <input type="submit" value="download">
+                    </form>
+                </div>
+            </main> -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Welcome {{firstname}} {{lastname}},</h1>
+                    <br>
+                </div>
+                <h1 class="h2">Class Teacher Report</h1>
+
+                <div class="container" style="margin-top:30px">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h2>Subjects Assigned to class {{classname}}:</h2>
+                                </div>
+                                <div class="col-md-3" align="right">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {% if courses %}
+                            <ul>
+                                {% for i in courses %}
+                                <h3>
+                                    <li>{{i}}</li>
+                                </h3>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <h2>No courses Assigned to this class yet</h2>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <h1 style="display:inline-block" class="mt-3">Download Complete Report:</h1>
+                <form action="{% url 'down_report' %}" method="POST" style="display:inline-block">
+                    {%csrf_token%}
+                    <input type="submit" value="Download" class="down-btn">
+                </form>
+            </main>
+        </div>
+
+</body>
+
+</html>

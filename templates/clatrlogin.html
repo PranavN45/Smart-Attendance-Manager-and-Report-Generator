@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/favicon.jpg" type="image/x-icon">
+    <title>Class Teacher Login</title>
+    <style>
+        body {
+            --primary: linear-gradient(90deg, #7f00ff 0%, #e100ff 100%);
+            background: var(--primary);
+        }
+
+        .login {
+            overflow: hidden;
+            background-color: whitesmoke;
+            padding: 40px 30px 30px 30px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 400px;
+            width: 75%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+                rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            background-size: 400% 400%;
+            animation: movegrad 15s ease infinite;
+        }
+
+        @keyframes movegrad {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .login h1 {
+            color: white;
+        }
+
+        input {
+            display: block;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            border: 0;
+            padding: 10px 10px;
+            margin: 15px -10px;
+        }
+
+        button {
+            cursor: pointer;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.25));
+            border: 1px solid white;
+            font-size: 16px;
+            text-transform: uppercase;
+            width: 80px;
+            padding: 10px 0;
+            margin-top: 10px;
+            margin-left: -5px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        button:hover {
+            transform: scale(.975);
+        }
+        .message{
+            color:#3b0760;
+            font-weight:bold;
+            font-size:1.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <nav>
+        <header>
+            <div class="left">
+                <div class="college-logo">
+                    <img src="../images/logo.png" alt="college logo">
+                </div>
+                <div class="college-text">
+                    <h4 id="bhavans"></h4>
+                    <h1 id="college-name"></h1>
+                    <h4 id="university"></h4>
+                </div>
+            </div>
+            <div class="right">
+                <a href="admin.html" class="active-tab">
+                    <h4>Admin Login</h4>
+                </a>
+            </div>
+        </header>
+    </nav> -->
+
+    <form class="login" action={% url 'clalogin' %} method="POST">
+        {% csrf_token %}
+        <h1>Class Teacher Login</h1>
+        {% if messages%}
+            {%for message in messages%}
+                <p class="message">{{message}}</p>
+            {%endfor%}
+        {%endif%}
+        <input name="username" type="text" placeholder="Username">
+        <input name="password" type="password" placeholder="Password">
+        <button>Login</button>
+    </form>
+
+</body>
+</html>
